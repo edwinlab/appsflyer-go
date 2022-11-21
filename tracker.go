@@ -133,16 +133,17 @@ type Event struct {
 }
 
 type body struct {
-	AdvertisingID string `json:"advertising_id,omitempty"`
-	AppsFlyerID   string `json:"appsflyer_id"`
-	BundleID      string `json:"bundle_id,omitempty"`
-	DeviceIP      string `json:"ip,omitempty"`
-	EventCurrency string `json:"eventCurrency,omitempty"`
-	EventName     string `json:"eventName"`
-	EventTime     string `json:"eventTime,omitempty"`
-	EventValue    string `json:"eventValue"`
-	IDFA          string `json:"idfa,omitempty"`
-	UseEventsAPI  bool   `json:"af_events_api,string"`
+	AdvertisingID  string `json:"advertising_id,omitempty"`
+	AppsFlyerID    string `json:"appsflyer_id"`
+	BundleID       string `json:"bundle_id,omitempty"`
+	DeviceIP       string `json:"ip,omitempty"`
+	EventCurrency  string `json:"eventCurrency,omitempty"`
+	EventName      string `json:"eventName"`
+	EventTime      string `json:"eventTime,omitempty"`
+	EventValue     string `json:"eventValue"`
+	IDFA           string `json:"idfa,omitempty"`
+	UseEventsAPI   bool   `json:"af_events_api,string"`
+	CustomerUserID string `json:"customer_user_id,omitempty"`
 }
 
 func NewEvent(appsFlyerID string, platform deviceOS) *Event {
@@ -199,6 +200,11 @@ func (evt *Event) SetAdvertisingID(advertisingID string) *Event {
 
 func (evt *Event) SetDeviceIP(deviceIP string) *Event {
 	evt.DeviceIP = deviceIP
+	return evt
+}
+
+func (evt *Event) SetCustomerUserID(customerUserID string) *Event {
+	evt.CustomerUserID = customerUserID
 	return evt
 }
 
